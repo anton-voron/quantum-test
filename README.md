@@ -28,7 +28,7 @@ To remove this env run: ```conda env remove --name quantum_test_task_env```
     - ```conda activate quantum_third_test_task_env```
 Run train cnn script:
     - ```python -B train_cnn.py```
-Run predict script:
-    - ```python predict.py```
+Run train random forest script:
+    - ```python train_random_forest.py```
 
 To remove this env run: ```conda env remove --name quantum_third_test_task_env```

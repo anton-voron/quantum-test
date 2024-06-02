@@ -26,9 +26,12 @@ class CNNModel(DigitClassificationInterface):
     def __init__(self):
         self.model = SimpleCNN()
         
-        model_path = '../model_weights/cnn_model.pth'
+        model_path = os.path.join(os.getcwd(), 'model_weights', 'cnn_model.pth')
         if os.path.exists(model_path):
             self.model.load_state_dict(torch.load(model_path))
+            print("Loaded CNN model weights")
+        else:
+            print("CNN model weights not found")
 
         if torch.cuda.is_available():
             self.model = self.model.cuda()
@@ -37,7 +40,10 @@ class CNNModel(DigitClassificationInterface):
 
     def predict(self, image):
         with torch.no_grad():
-            image = image.unsqueeze(0).unsqueeze(0)  
+            if image.dim() == 2:  
+                image = image.unsqueeze(0).unsqueeze(0)
+            elif image.dim() == 3:  
+                image = image.unsqueeze(0)
             output = self.model(image)
             _, predicted = torch.max(output, 1)
             return predicted.item()
