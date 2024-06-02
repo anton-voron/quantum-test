@@ -1,8 +1,19 @@
 import torch
+from torchvision import datasets, transforms
+import random
+
 from digit_classifier import DigitClassifier
 
-# Load a sample image (28x28) for testing
-image = torch.rand(28, 28)  # Replace with actual MNIST image
+transform = transforms.ToTensor()
+full_dataset = datasets.MNIST(root='./data', train=True, transform=transform, download=True)
+random_idx = random.randint(0, len(full_dataset))
+
+images = full_dataset.data
+labels = full_dataset.targets
+
+image = images[random_idx]
+label = labels[random_idx]
+print(f"Image shape: {image.size()}, Label: {label}")
 
 # Test CNN Model
 cnn_classifier = DigitClassifier('cnn')
