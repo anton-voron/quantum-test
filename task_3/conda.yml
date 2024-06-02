@@ -1,0 +1,12 @@
+name: quantum_third_test_task_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - anaconda
+  - pytorch=1.11.0
+  - torchvision=0.12.0
+  - pip
+  - pip:
+    - -r requirements.txt
