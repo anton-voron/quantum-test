@@ -31,4 +31,6 @@ Run train cnn script:
 Run train random forest script:
     - ```python train_random_forest.py```
 
+Inference can simply be calles via mnist_task.ipynb
+
 To remove this env run: ```conda env remove --name quantum_third_test_task_env```

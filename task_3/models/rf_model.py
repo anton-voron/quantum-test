@@ -17,5 +17,5 @@ class RFModel(DigitClassificationInterface):
             self.model = RandomForestClassifier(n_estimators=100, random_state=42)
 
     def predict(self, image):
-        image = image.numpy().flatten().reshape(1, -1)  
+        image = image.numpy().reshape(-1, 28*28)
         return self.model.predict(image)[0]
